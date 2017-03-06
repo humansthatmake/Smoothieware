@@ -112,14 +112,16 @@ void MainMenuScreen::on_refresh()
 void MainMenuScreen::display_menu_line(uint16_t line)
 {
     switch ( line ) {
-        case 0: THEPANEL->lcd->printf("DRO"); break;
+        case 0: THEPANEL->lcd->printf("<-- VOLTAR"); break;
         case 1: if(THEKERNEL->is_halted()) THEPANEL->lcd->printf("Clear HALT"); else THEPANEL->lcd->printf(THEPANEL->is_playing() ? "Abort" : "Play"); break;
-        case 2: THEPANEL->lcd->printf("Jog"); break;
-        case 3: THEPANEL->lcd->printf("Prepare"); break;
-        case 4: THEPANEL->lcd->printf("Custom"); break;
-        case 5: THEPANEL->lcd->printf("Configure"); break;
-        case 6: THEPANEL->lcd->printf("Probe"); break;
-        case 7: THEPANEL->lcd->printf("Laser"); break; // only used if THEPANEL->has_laser()
+        case 2: THEPANEL->lcd->printf("Movimentar para Casa"); break;
+        case 3: THEPANEL->lcd->printf("Jog"); break;
+        case 4: THEPANEL->lcd->printf("Zerar"); break;
+        // case 3: THEPANEL->lcd->printf("Prepare"); break;
+        // case 4: THEPANEL->lcd->printf("Custom"); break;
+        // case 5: THEPANEL->lcd->printf("Configure"); break;
+        // case 6: THEPANEL->lcd->printf("Probe"); break;
+        // case 7: THEPANEL->lcd->printf("Laser"); break; // only used if THEPANEL->has_laser()
     }
 }
 
@@ -133,12 +135,14 @@ void MainMenuScreen::clicked_menu_entry(uint16_t line)
                 THEPANEL->enter_screen(this->watch_screen);
             }else if(THEPANEL->is_playing()) abort_playing();
              else THEPANEL->enter_screen(this->file_screen); break;
-        case 2: THEPANEL->enter_screen(this->jog_screen     ); break;
-        case 3: THEPANEL->enter_screen(this->prepare_screen ); break;
-        case 4: THEPANEL->enter_screen(THEPANEL->custom_screen ); break;
-        case 5: setupConfigureScreen(); break;
-        case 6: THEPANEL->enter_screen((new ProbeScreen())->set_parent(this)); break;
-        case 7: THEPANEL->enter_screen((new LaserScreen())->set_parent(this)); break; // self deleting, only used if THEPANEL->has_laser()
+        case 2: send_command("$H"); break;
+        case 3: THEPANEL->enter_screen(this->jog_screen); break;
+        case 4: send_command("G10 L20 P0 X0 Y0 Z0"); break;
+        // case 3: THEPANEL->enter_screen(this->prepare_screen ); break;
+        // case 4: THEPANEL->enter_screen(THEPANEL->custom_screen ); break;
+        // case 5: setupConfigureScreen(); break;
+        // case 6: THEPANEL->enter_screen((new ProbeScreen())->set_parent(this)); break;
+        // case 7: THEPANEL->enter_screen((new LaserScreen())->set_parent(this)); break; // self deleting, only used if THEPANEL->has_laser()
     }
 }
 
