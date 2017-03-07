@@ -95,7 +95,7 @@ void MainMenuScreen::setupConfigureScreen()
 void MainMenuScreen::on_enter()
 {
     THEPANEL->enter_menu_mode();
-    THEPANEL->setup_menu(THEPANEL->has_laser()?8:7);
+    THEPANEL->setup_menu(THEPANEL->has_laser()?6:5);
     this->refresh_menu();
 }
 
@@ -113,8 +113,8 @@ void MainMenuScreen::display_menu_line(uint16_t line)
 {
     switch ( line ) {
         case 0: THEPANEL->lcd->printf("<-- VOLTAR"); break;
-        case 1: if(THEKERNEL->is_halted()) THEPANEL->lcd->printf("Clear HALT"); else THEPANEL->lcd->printf(THEPANEL->is_playing() ? "Abort" : "Play"); break;
-        case 2: THEPANEL->lcd->printf("Movimentar para Casa"); break;
+        case 1: if(THEKERNEL->is_halted()) THEPANEL->lcd->printf("<!> DESBLOQUEAR"); else THEPANEL->lcd->printf(THEPANEL->is_playing() ? "<!> ABORTAR" : "CORPOS"); break;
+        case 2: THEPANEL->lcd->printf("Casa"); break;
         case 3: THEPANEL->lcd->printf("Jog"); break;
         case 4: THEPANEL->lcd->printf("Zerar"); break;
         // case 3: THEPANEL->lcd->printf("Prepare"); break;
@@ -149,7 +149,7 @@ void MainMenuScreen::clicked_menu_entry(uint16_t line)
 void MainMenuScreen::abort_playing()
 {
     //PublicData::set_value(player_checksum, abort_play_checksum, NULL);
-    send_command("abort");
+    send_command("<!> ABORTAR");
     THEPANEL->enter_screen(this->watch_screen);
 }
 
