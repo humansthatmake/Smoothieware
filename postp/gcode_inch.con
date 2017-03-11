@@ -1,0 +1,61 @@
+;
+; G - Code configuration file 
+;
+; History
+;
+; Who When     What
+; === ======== ========================================
+; TM  13/05/99 Written
+; BEM 20/05/99 Removed line numbers
+; bem 21/03/00 Added DESCRIPTION and FILE_EXTENSION fields
+;
+DESCRIPTION = "G-Code (inch) (*.tap)"
+;
+FILE_EXTENSION = "tap"
+;
+UNITS = INCH
+;
+; Cariage return - line feed at end of each line
+;
+END_OF_LINE = "[13][10]"
+;
+; Block numbering 
+;
+LINE_NUM_START     = 0
+LINE_NUM_INCREMENT = 10
+LINE_NUM_MAXIMUM   = 999999
+;
+; Set up default formating for variables
+;
+; Line numbering
+FORMAT = [N|@|N|1.0]
+; Spindle Speed
+FORMAT = [S|@|S|1.0]
+; Feed Rate
+FORMAT = [F|#|F|1.1]
+; Tool moves in x,y and z
+FORMAT = [X|#|X|1.4]
+FORMAT = [Y|#|Y|1.4]
+FORMAT = [Z|#|Z|1.4]
+; Home tool positions 
+FORMAT = [XH|@|X|1.4]
+FORMAT = [YH|@|Y|1.4]
+FORMAT = [ZH|@|Z|1.4]
+;
+; Set up program header
+;
+START = "T1M6"
+START = "G0[ZH]"
+START = "G0[XH][YH][S]M3"
+;
+; Program moves
+;
+RAPID_RATE_MOVE        = "G0[X][Y][Z]"
+FIRST_FEED_RATE_MOVE   = "G1[X][Y][Z][F]"
+FEED_RATE_MOVE         = "[X][Y][Z]"
+;
+; End of file
+;
+END = "G0[ZH]"
+END = "G0X0Y0"
+END = "M30"
