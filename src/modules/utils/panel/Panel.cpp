@@ -318,8 +318,8 @@ void Panel::on_main_loop(void *argument)
 }
 
 //glyph size in pixels
-#define ohw_logo_antipixel_width 57
-#define ohw_logo_antipixel_height 57
+#define ohw_logo_antipixel_width 52
+#define ohw_logo_antipixel_height 52
 //insert the plyph here. Convert image to hexadecimal file
 static const uint8_t ohw_logo_antipixel_bits[] = {
 0xff,0xff,0xff,0xff,0xff,0xff,0xf0,
