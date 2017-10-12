@@ -399,19 +399,19 @@ void Panel::idle_processing()
         this->lcd->clear();
         //print first lines
         //Welcome to Smoothie
-        this->lcd->setCursor(11, 2); this->lcd->printf("Welcome!");
+        this->lcd->setCursor(12, 2); this->lcd->printf("Welcome!");
         //build version
         //this->lcd->setCursor(65, 4); this->lcd->printf("%s", build.substr(0, 20).c_str());
         //date
         //this->lcd->setCursor(65, 5); this->lcd->printf("%s", date.substr(0, 20).c_str());
         //please wait...
-        this->lcd->setCursor(11, 4); this->lcd->printf("Please");
-        this->lcd->setCursor(11, 5); this->lcd->printf("wait....");
+        this->lcd->setCursor(12, 4); this->lcd->printf("Please");
+        this->lcd->setCursor(12, 5); this->lcd->printf("wait....");
 
         //enable grapics
         if (this->lcd->hasGraphics()) {
             // blit a glyph of w pixels wide and h pixels high to x, y.
-            this->lcd->bltGlyph(0, 0, ohw_logo_antipixel_width, ohw_logo_antipixel_height, ohw_logo_antipixel_bits);
+            this->lcd->bltGlyph(1, 1, ohw_logo_antipixel_width, ohw_logo_antipixel_height, ohw_logo_antipixel_bits);
         }
 
         this->lcd->on_refresh(true); // tell lcd to display now

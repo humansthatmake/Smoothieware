@@ -133,7 +133,7 @@ void MainMenuScreen::clicked_menu_entry(uint16_t line)
                 THEPANEL->enter_screen(this->watch_screen);
             }else if(THEPANEL->is_playing()) abort_playing();
              else THEPANEL->enter_screen(this->file_screen); break;
-        case 2: send_command("$H_M5"); break;
+        case 2: send_command("$H"); break;
         //case 3: THEPANEL->enter_screen(this->prepare_screen ); break;
         //case 4: THEPANEL->enter_screen(THEPANEL->custom_screen ); break;
         //case 5: setupConfigureScreen(); break;
@@ -146,6 +146,8 @@ void MainMenuScreen::abort_playing()
 {
     //PublicData::set_value(player_checksum, abort_play_checksum, NULL);
     send_command("abort");
+    send_command("$H");
+    send_gcode("M5");
     THEPANEL->enter_screen(this->watch_screen);
 }
 
