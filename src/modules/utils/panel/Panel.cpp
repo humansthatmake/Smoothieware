@@ -411,7 +411,7 @@ void Panel::idle_processing()
         //enable grapics
         if (this->lcd->hasGraphics()) {
             // blit a glyph of w pixels wide and h pixels high to x, y.
-            this->lcd->bltGlyph(1, 1, ohw_logo_antipixel_width, ohw_logo_antipixel_height, ohw_logo_antipixel_bits);
+            this->lcd->bltGlyph(7, 7, ohw_logo_antipixel_width, ohw_logo_antipixel_height, ohw_logo_antipixel_bits);
         }
 
         this->lcd->on_refresh(true); // tell lcd to display now
