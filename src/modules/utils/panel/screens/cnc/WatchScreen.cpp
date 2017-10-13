@@ -130,7 +130,7 @@ void WatchScreen::on_main_loop()
 {
     if (this->issue_change_speed) {
         this->issue_change_speed = false;
-        set_speed();
+        //set_speed();
     }
     PanelScreen::on_main_loop(); // in case any queued commands left
 }
