@@ -30,7 +30,7 @@ public:
     void refresh_menu(void) { refresh_menu(true); };
     virtual void display_menu_line(uint16_t line) = 0;
     // default idle timeout for a screen, each screen can override this
-    virtual int idle_timeout_secs(){ return 10; }
+    virtual int idle_timeout_secs(){ return 60; }
 
     friend class Panel;
 protected:

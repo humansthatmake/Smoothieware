@@ -184,7 +184,7 @@ void WatchScreen::display_menu_line(uint16_t line)
             THEROBOT->from_millimeters(THEROBOT->get_feed_rate()),
             THEROBOT->from_millimeters(THEKERNEL->conveyor->get_current_feedrate()*60.0F));
             break;
-        case 5: THEPANEL->lcd->printf("%3d%% %2lu:%02lu %3u%% sd", this->current_speed, this->elapsed_time / 60, this->elapsed_time % 60, this->sd_pcnt_played); break;
+        case 5: THEPANEL->lcd->printf("time: %2lu:%02lu %3u%% sd", this->elapsed_time / 60, this->elapsed_time % 60, this->sd_pcnt_played); break;
         case 6:
             if(THEPANEL->has_laser()){
                 #ifndef NO_TOOLS_LASER
@@ -224,10 +224,10 @@ const char *WatchScreen::get_status()
     }
 }
 
-void WatchScreen::set_speed()
-{
-    send_gcode("M220", 'S', this->current_speed);
-}
+//void WatchScreen::set_speed()
+//{
+//    send_gcode("M220", 'S', this->current_speed);
+//}
 
 const char *WatchScreen::get_network()
 {
